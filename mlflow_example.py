@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class OpenWebUIMLflowTracker:
     """MLflow integration for Open WebUI experiments"""
     
-    def __init__(self, tracking_uri: str = "http://localhost:5000"):
+    def __init__(self, tracking_uri: str = "http://localhost:5001"):
         """Initialize MLflow tracking"""
         mlflow.set_tracking_uri(tracking_uri)
         self.client = mlflow.tracking.MlflowClient()

@@ -66,9 +66,9 @@ services:
     container_name: mlflow
     restart: unless-stopped
     ports:
-      - "5000:5000"  # MLflow UI will be available at http://localhost:5000
+      - "5001:5000"  # MLflow UI will be available at http://localhost:5001
     environment:
-      - MLFLOW_TRACKING_URI=http://localhost:5000
+      - MLFLOW_TRACKING_URI=http://localhost:5001
       - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
       - MLFLOW_S3_IGNORE_TLS_CERT=true
       - MLFLOW_S3_VERIFY_SSL=false

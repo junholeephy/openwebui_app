@@ -96,7 +96,7 @@ The `docker-compose.yml` file is pre-configured with:
 ### **Monitoring Configuration**
 
 The monitoring stack includes:
-- **MLflow**: Port 5000 (experiment tracking)
+- **MLflow**: Port 5001 (experiment tracking)
 - **MinIO**: Port 9000 (API), 9001 (Console)
 - **Prometheus**: Port 9090 (metrics collection)
 - **Grafana**: Port 3000 (dashboards)
@@ -221,7 +221,7 @@ python launch-docker.py stop
 Once started, access your monitoring tools at:
 
 - **Open WebUI**: http://localhost:8080
-- **MLflow**: http://localhost:5000
+- **MLflow**: http://localhost:5001
 - **MinIO Console**: http://localhost:9001 (minioadmin/minioadmin)
 - **Grafana**: http://localhost:3000 (admin/admin)
 - **Prometheus**: http://localhost:9090

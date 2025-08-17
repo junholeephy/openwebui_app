@@ -60,7 +60,7 @@ def start_openwebui():
         print("✅ Open WebUI is now running!")
         print("\n🌐 Access Points:")
         print("  • Open WebUI:     http://localhost:8080")
-        print("  • MLflow:         http://localhost:5000")
+        print("  • MLflow:         http://localhost:5001")
         print("  • MinIO Console:  http://localhost:9001 (minioadmin/minioadmin)")
         print("  • Grafana:        http://localhost:3000 (admin/admin)")
         print("  • Prometheus:     http://localhost:9090")
@@ -146,7 +146,7 @@ def show_monitoring_info():
     
     print("\n🌐 Access URLs:")
     print("  • Open WebUI:     http://localhost:8080")
-    print("  • MLflow:         http://localhost:5000")
+    print("  • MLflow:         http://localhost:5001")
     print("  • MinIO Console:  http://localhost:9001")
     print("  • Grafana:        http://localhost:3000")
     print("  • Prometheus:     http://localhost:9090")

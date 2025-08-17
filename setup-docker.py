@@ -32,7 +32,7 @@ def create_env_file():
                 f.write("# Monitoring Configuration\n")
                 f.write("GRAFANA_PASSWORD=admin\n\n")
                 f.write("# MLflow Configuration\n")
-                f.write("MLFLOW_TRACKING_URI=http://localhost:5000\n")
+                f.write("MLFLOW_TRACKING_URI=http://localhost:5001\n")
                 f.write("MINIO_ACCESS_KEY=minioadmin\n")
                 f.write("MINIO_SECRET_KEY=minioadmin\n\n")
                 f.write("# Optional: Customize these if needed\n")
