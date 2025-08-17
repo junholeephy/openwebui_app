@@ -23,6 +23,14 @@ class OpenWebUIMLflowTracker:
     def __init__(self, tracking_uri: str = "http://localhost:5001"):
         """Initialize MLflow tracking"""
         mlflow.set_tracking_uri(tracking_uri)
+        
+        # Set MinIO credentials for artifact storage
+        os.environ['AWS_ACCESS_KEY_ID'] = 'minioadmin'
+        os.environ['AWS_SECRET_ACCESS_KEY'] = 'minioadmin'
+        os.environ['MLFLOW_S3_ENDPOINT_URL'] = 'http://localhost:9000'
+        os.environ['MLFLOW_S3_IGNORE_TLS_CERT'] = 'true'
+        os.environ['MLFLOW_S3_VERIFY_SSL'] = 'false'
+        
         self.client = mlflow.tracking.MlflowClient()
         
     def start_experiment(self, experiment_name: str = "openwebui_chat"):
@@ -223,11 +231,17 @@ def example_usage():
         
         # Get experiment history
         history = tracker.get_experiment_history()
-        print(f"Experiment history: {len(history)} runs")
+        if history is not None:
+            print(f"Experiment history: {len(history)} runs")
+        else:
+            print("No experiment history found")
         
         # Compare models
         comparison = tracker.compare_models()
-        print(f"Model comparison: {comparison}")
+        if comparison:
+            print(f"Model comparison: {comparison}")
+        else:
+            print("No model comparison data available")
 
 if __name__ == "__main__":
     example_usage()
