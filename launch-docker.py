@@ -60,6 +60,8 @@ def start_openwebui():
         print("✅ Open WebUI is now running!")
         print("\n🌐 Access Points:")
         print("  • Open WebUI:     http://localhost:8080")
+        print("  • MLflow:         http://localhost:5001")
+        print("  • MinIO Console:  http://localhost:9001 (minioadmin/minioadmin)")
         print("  • Grafana:        http://localhost:3000 (admin/admin)")
         print("  • Prometheus:     http://localhost:9090")
         print("  • Node Exporter:  http://localhost:9100")
@@ -135,6 +137,8 @@ def show_monitoring_info():
     print("📊 Open WebUI Monitoring Stack")
     print("=" * 40)
     print("\n🔍 Monitoring Services:")
+    print("  • MLflow:         Experiment tracking and model registry")
+    print("  • MinIO:          Object storage for ML artifacts")
     print("  • Prometheus:     Metrics collection and storage")
     print("  • Grafana:        Beautiful dashboards and visualizations")
     print("  • Node Exporter:  System resource metrics")
@@ -142,11 +146,15 @@ def show_monitoring_info():
     
     print("\n🌐 Access URLs:")
     print("  • Open WebUI:     http://localhost:8080")
+    print("  • MLflow:         http://localhost:5001")
+    print("  • MinIO Console:  http://localhost:9001")
     print("  • Grafana:        http://localhost:3000")
     print("  • Prometheus:     http://localhost:9090")
     print("  • Node Exporter:  http://localhost:9100")
     
     print("\n🔑 Default Credentials:")
+    print("  • MLflow:         No authentication required")
+    print("  • MinIO:          minioadmin / minioadmin")
     print("  • Grafana:        admin / admin")
     
     print("\n📈 What You Can Monitor:")

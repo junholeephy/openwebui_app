@@ -37,3 +37,17 @@ scrape_configs:
       - targets: ['grafana:3000']
     metrics_path: '/metrics'
     scrape_interval: 30s
+
+  # MLflow metrics
+  - job_name: 'mlflow'
+    static_configs:
+      - targets: ['mlflow:5000']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # MinIO metrics
+  - job_name: 'minio'
+    static_configs:
+      - targets: ['minio:9000']
+    metrics_path: '/minio/v2/metrics/cluster'
+    scrape_interval: 30s
