@@ -1,0 +1,169 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "MLflow Experiment Tracking Dashboard",
+    "tags": ["mlflow", "machine-learning", "experiments"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "MLflow Service Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "up{job=\"mlflow\"}",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": 0},
+                {"color": "green", "value": 1}
+              ]
+            }
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Total Experiments",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "mlflow_experiments_total",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Active Runs",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "mlflow_runs_active",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 12, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "Model Registry Size",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "mlflow_models_registered",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 18, "y": 0}
+      },
+      {
+        "id": 5,
+        "title": "Experiment Run History",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(mlflow_runs_created[5m])",
+            "legendFormat": "Runs Created/sec",
+            "refId": "A"
+          },
+          {
+            "expr": "rate(mlflow_runs_completed[5m])",
+            "legendFormat": "Runs Completed/sec",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "reqps"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "MinIO Storage Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "minio_bucket_usage_size_bytes",
+            "legendFormat": "Storage Used",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+      },
+      {
+        "id": 7,
+        "title": "MLflow API Response Time",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(mlflow_http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "95th Percentile",
+            "refId": "A"
+          },
+          {
+            "expr": "histogram_quantile(0.50, rate(mlflow_http_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "Median",
+            "refId": "B"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "s"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 8,
+        "title": "Experiment Metrics Distribution",
+        "type": "heatmap",
+        "targets": [
+          {
+            "expr": "sum(rate(mlflow_metrics_logged[5m])) by (experiment_name, metric_name)",
+            "legendFormat": "{{experiment_name}} - {{metric_name}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "10s"
+  }
+}
